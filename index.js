@@ -1,7 +1,10 @@
+// require("dotenv").config();
+import 'dotenv/config'
+
 import express from "express";
 
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
 
 // middleware to parse json bodies
 app.use(express.json());
@@ -26,6 +29,7 @@ app.post("/teas", (req, res) => {
   teaData.push(newTea);
   res.status(201).send(newTea);
 });
+
 
 // get all teas
 app.get("/teas", (req, res) => {
